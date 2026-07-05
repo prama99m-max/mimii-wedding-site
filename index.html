@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fff7fb;
+    color: #333;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url('https://images.unsplash.com/photo-1529634894893-1c5f0f1d6c4a') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    animation: fadeIn 2s ease-in;
+}
+
+.hero h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 70px;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+/* COUNTDOWN */
+.countdown {
+    background: #fff;
+    padding: 40px 20px;
+}
+
+.timer {
+    font-size: 28px;
+    font-weight: bold;
+    color: #c2185b;
+}
+
+/* GALLERY */
+.gallery {
+    padding: 50px 20px;
+}
+
+.gallery img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin: 10px;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* RSVP */
+.rsvp {
+    background: #ffe6f0;
+    padding: 50px 20px;
+}
+
+input, textarea {
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+button {
+    padding: 10px 20px;
+    background: #c2185b;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #a3154a;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 MUSIC -->
+<audio autoplay loop>
+    <source src="YOUR-MUSIC-LINK.mp3" type="audio/mp3">
+</audio>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>We're Getting Married</h1>
+    <p>Save the Date 💍</p>
+    <p><strong>December 26, 2026</strong></p>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="countdown">
+    <h2>Countdown to the Big Day</h2>
+    <div class="timer" id="timer"></div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery">
+    <h2>Our Moments</h2>
+    <img src="https://source.unsplash.com/400x400/?wedding,couple" />
+    <img src="https://source.unsplash.com/400x400/?love,ring" />
+    <img src="https://source.unsplash.com/400x400/?romantic,flowers" />
+</div>
+
+<!-- RSVP -->
+<div class="rsvp">
+    <h2>RSVP</h2>
+    <p>Let us know if you’ll be there 💌</p>
+
+    <input type="text" placeholder="Your Name"><br>
+    <input type="email" placeholder="Your Email"><br>
+    <textarea placeholder="Message"></textarea><br>
+
+    <button onclick="alert('RSVP sent! (Connect this to Google Form later)')">
+        Send RSVP
+    </button>
+</div>
+
+<script>
+// COUNTDOWN SCRIPT
+const weddingDate = new Date("Dec 26, 2026 00:00:00").getTime();
+
+const x = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("timer").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+    if (distance < 0) {
+        document.getElementById("timer").innerHTML = "It's Wedding Day 💍";
+    }
+}, 1000);
+</script>
+
+</body>
+</html>
