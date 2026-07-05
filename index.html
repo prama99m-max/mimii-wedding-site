@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wedding Invitation</title>
+<title>Two hearts, one promise — join us as we say forever.</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -11,7 +11,7 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: #fff7fb;
+    background: linear-gradient(#fff7fb, #ffeef6);
     color: #333;
     text-align: center;
 }
@@ -20,7 +20,8 @@ body {
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-    url('https://images.unsplash.com/photo-1529634894893-1c5f0f1d6c4a') center/cover no-repeat;
+    url('https://images.unsplash.com/photo-1529634894893-1c5f0f1d6c4a?auto=format&fit=crop&w=1200&q=80')
+    center/cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,28 +46,40 @@ body {
 
 /* COUNTDOWN */
 .timer {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: bold;
     color: #c2185b;
 }
 
-/* GALLERY */
-.gallery img {
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
-    margin: 10px;
-    border-radius: 15px;
-    transition: transform 0.3s;
+/* DECOR LINE */
+.divider {
+    width: 120px;
+    height: 2px;
+    background: #c2185b;
+    margin: 20px auto;
 }
 
-.gallery img:hover {
-    transform: scale(1.05);
+/* GALLERY */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.gallery img {
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 /* RSVP */
 .rsvp {
-    background: #ffe6f0;
+    background: #fff0f5;
+    padding: 50px 20px;
+    margin-top: 40px;
 }
 
 input, textarea {
@@ -76,7 +89,6 @@ input, textarea {
     margin: 10px;
     border-radius: 10px;
     border: none;
-    outline: none;
 }
 
 button {
@@ -85,14 +97,9 @@ button {
     color: white;
     border: none;
     border-radius: 25px;
-    cursor: pointer;
 }
 
-button:hover {
-    background: #a3154a;
-}
-
-/* FADE IN */
+/* FADE */
 .fade {
     animation: fadeIn 2s ease-in;
 }
@@ -106,11 +113,6 @@ button:hover {
 
 <body>
 
-<!-- 🎵 MUSIC (replace link if needed) -->
-<audio autoplay loop>
-    <source src="" type="audio/mp3">
-</audio>
-
 <!-- HERO -->
 <div class="hero fade">
     <h1>We're Getting Married</h1>
@@ -120,49 +122,61 @@ button:hover {
 
 <!-- COUNTDOWN -->
 <div class="section">
-    <h2>Countdown to Our Big Day</h2>
+    <h2>Countdown</h2>
+    <div class="divider"></div>
     <div class="timer" id="timer"></div>
 </div>
 
+<!-- STORY / DETAILS -->
+<div class="section">
+    <h2>Our Story</h2>
+    <div class="divider"></div>
+    <p>Together we begin a beautiful journey filled with love, laughter, and forever.</p>
+</div>
+
 <!-- GALLERY -->
-<div class="section gallery">
-    <h2>Our Journey</h2>
-    <img src="https://source.unsplash.com/400x400/?wedding,couple">
-    <img src="https://source.unsplash.com/400x400/?love,ring">
-    <img src="https://source.unsplash.com/400x400/?romance,flowers">
+<div class="section">
+    <h2>Moments</h2>
+    <div class="divider"></div>
+
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80">
+        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80">
+        <img src="https://images.unsplash.com/photo-1523438097201-512ae7d59c3a?auto=format&fit=crop&w=800&q=80">
+    </div>
 </div>
 
 <!-- RSVP -->
-<div class="section rsvp">
+<div class="rsvp">
     <h2>RSVP</h2>
-    <p>Let us know if you’re coming 💌</p>
+    <div class="divider"></div>
 
     <input type="text" placeholder="Your Name"><br>
     <input type="email" placeholder="Your Email"><br>
     <textarea placeholder="Your Message"></textarea><br>
 
-    <button onclick="alert('RSVP submitted! (Next step: connect Google Form for automation)')">
+    <button onclick="alert('RSVP received 💌')">
         Send RSVP
     </button>
 </div>
 
 <script>
-// Countdown
+// countdown
 const weddingDate = new Date("Dec 26, 2026 00:00:00").getTime();
 
-setInterval(function () {
+setInterval(() => {
     const now = new Date().getTime();
     const distance = weddingDate - now;
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const days = Math.floor(distance / (1000*60*60*24));
+    const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+    const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+    const seconds = Math.floor((distance%(1000*60))/1000);
 
     document.getElementById("timer").innerHTML =
-        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+        days+"d "+hours+"h "+minutes+"m "+seconds+"s";
 
-    if (distance < 0) {
+    if(distance < 0){
         document.getElementById("timer").innerHTML = "It's Wedding Day 💍";
     }
 }, 1000);
@@ -170,4 +184,3 @@ setInterval(function () {
 
 </body>
 </html>
-
